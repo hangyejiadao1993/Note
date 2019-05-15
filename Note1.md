@@ -25,3 +25,15 @@ https://www.cnblogs.com/yufeng218/p/8370670.html
 
 #centos查看内存命令
  free -m 
+
+
+#docker搭建gitlab+Jenkins持续集成环境
+ https://blog.51cto.com/12832314/2145965
+
+
+
+ #当前用户加入docker组
+ sudo groupadd docker     #添加docker用户组
+sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
+newgrp docker     #更新用户组
+docker ps    #测试docker命令是否可以使用sudo正常使用
