@@ -42,5 +42,5 @@ docker ps    #测试docker命令是否可以使用sudo正常使用
 #docker可视化
 sudo docker run  -d --link registry:registry -e ENV_DOCKER_REGISTRY_HOST=registry -e ENV_DOCKER_REGISTRY_PORT=5000 -p 8080:80 --name dockermanage konradkleine/docker-registry-frontend:v2
 
-
+#ssh windows
 ssh root@IP
