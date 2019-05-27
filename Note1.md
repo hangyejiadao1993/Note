@@ -44,3 +44,6 @@ sudo docker run  -d --link registry:registry -e ENV_DOCKER_REGISTRY_HOST=registr
 
 #ssh windows
 ssh root@IP
+
+#如果创建时未指定 –restart=always ,可通过update 命令设置 
+docker update –restart=always xxx 
