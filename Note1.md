@@ -48,3 +48,7 @@ ssh root@IP
 #如果创建时未指定 –restart=always ,可通过update 命令设置 
 docker update –restart=always xxx 
 
+
+
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
