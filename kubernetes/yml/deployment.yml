@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  name: myapp-deployment
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: myapp
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+        maxSurge: 1
+        maxUnavailable: 1
+  minReadySeconds: 5
+ 
+  template:
+    metadata:
+      labels:
+        app: myapp
+        zone: prod
+        version: v1
+    spec:
+      containers:
+        - name: myapp-frontend
+          image: hangyejiadao/frontend:v1
+          ports:
+            - containerPort:  80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: DEVELOPMENT
+            - name: SQLSERVER_CONNECTIONSTRING
+              value: "Server=sqlserver:30002;Database=myapp;User=sa;Password=Hangye1993;MultipleActiveResultSets=true;"

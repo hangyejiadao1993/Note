@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: frontend-pod
+ labels:
+   app: myapp
+   zone: prod
+   version: v1
+spec:
+  containers:
+   - name: myapp-frontend
+     image: hangyejiadao/frontend:v1
+     ports:
+        - containerPort: 80
