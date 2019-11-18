@@ -10,4 +10,3 @@ spec:
       port: 1433
       targetPort: 1433
   type: ClusterIP
-  
