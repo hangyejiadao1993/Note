@@ -99,14 +99,15 @@ EOF
 $ yum install -y kubelet-1.13.3 kubeadm-1.13.3 kubectl-1.13.3
 $ systemctl enable kubelet
 ```
+ yum install -y kubelet  kubeadm  kubectl 
 
 ## 5. 部署Kubernetes Master
 
 ```
 $ kubeadm init \
-  --apiserver-advertise-address=192.168.31.62 \
+  --apiserver-advertise-address=192.168.23.128 \
   --image-repository registry.aliyuncs.com/google_containers \
-  --kubernetes-version v1.13.3 \
+  --kubernetes-version v1.16.2 \
   --service-cidr=10.1.0.0/16\
   --pod-network-cidr=10.244.0.0/16
 ```
@@ -121,6 +122,12 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 $ kubectl get nodes
 ```
+
+
+ mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 
 ## 6. 安装Pod网络插件（CNI）
 
