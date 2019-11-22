@@ -70,6 +70,23 @@ Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 ### 4.1 安装Docker
 
 ```
+
+ sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+  sudo yum install docker-ce docker-ce-cli containerd.io -y            
+
 $ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
 $ yum -y install docker-ce-18.06.1.ce-3.el7
 $ systemctl enable docker && systemctl start docker
