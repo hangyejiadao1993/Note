@@ -94,6 +94,11 @@ $ docker --version
 Docker version 18.06.1-ce, build e68fc7a
 ```
 
+卸载docker
+
+yum list installed | grep docker
+
+
 ### 4.2 添加阿里云YUM软件源
 
 ```
@@ -122,9 +127,9 @@ $ systemctl enable kubelet
 
 ```
 $ kubeadm init \
-  --apiserver-advertise-address=192.168.23.128 \
+  --apiserver-advertise-address=192.168.111.133\
   --image-repository registry.aliyuncs.com/google_containers \
-  --kubernetes-version v1.16.2 \
+  --kubernetes-version v1.16.3 \
   --service-cidr=10.1.0.0/16\
   --pod-network-cidr=10.244.0.0/16
 ```
@@ -139,7 +144,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 $ kubectl get nodes
 ```
-
+<,,>
 
  mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
