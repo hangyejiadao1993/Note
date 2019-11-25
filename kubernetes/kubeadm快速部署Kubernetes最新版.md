@@ -113,6 +113,26 @@ gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors
 EOF
 ```
 
+
+
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
+# Set SELinux in permissive mode (effectively disabling it)
+setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+
+systemctl enable --now kubelet
+
 ### 4.3 安装kubeadm，kubelet和kubectl
 
 由于版本更新频繁，这里指定版本号部署：
@@ -127,13 +147,18 @@ $ systemctl enable kubelet
 
 ```
 $ kubeadm init \
-  --apiserver-advertise-address=192.168.111.133\
+  --apiserver-advertise-address=155.138.216.17\
   --image-repository registry.aliyuncs.com/google_containers \
   --kubernetes-version v1.16.3 \
   --service-cidr=10.1.0.0/16\
   --pod-network-cidr=10.244.0.0/16
 ```
-
+kubeadm init \
+  --apiserver-advertise-address=155.138.216.17\
+ 
+  --kubernetes-version v1.16.3 \
+  --service-cidr=10.1.0.0/16\
+  --pod-network-cidr=10.244.0.0/16
 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址。
 
 使用kubectl工具：
