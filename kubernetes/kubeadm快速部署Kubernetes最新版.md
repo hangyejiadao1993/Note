@@ -88,7 +88,7 @@ sudo yum-config-manager \
   sudo yum install docker-ce docker-ce-cli containerd.io -y            
 
 $ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
-$ yum -y install docker-ce-18.06.1.ce-3.el7
+$  
 $ systemctl enable docker && systemctl start docker
 $ docker --version
 Docker version 18.06.1-ce, build e68fc7a
@@ -179,7 +179,8 @@ $ kubectl get nodes
 ## 6. 安装Pod网络插件（CNI）
 
 ```
-$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
+$ kubectl apply -f 
+                   https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
 确保能够访问到quay.io这个registery。
